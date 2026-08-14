@@ -13,23 +13,24 @@ Each INC message must follow these principles:
 1.	Use a clear, concise, and professional tone.
 2.	Provide both English Version and 中文版本.
 3.	Keep site names, tower names, floor names, device numbers, vendor names, staff names, and department names unchanged.
-4.	Do not assume information that has not been provided.
-5.	If information is unavailable, use TBC, Pending, or N/A.
-6.	Date and time should use the format DD-MM-YYYY HH:MM.
-7.	The incident description should be short, direct, and operationally clear.
+4.  If Point 4 "Incident" is not following the rules of "Category" - "Site" - "Device Number" - Short Description", plesae ask the user to confirm before final output.
+5.	Do not assume information that has not been provided.
+6.	If information is unavailable, ask user to provide.
+7.	Date and time should use the format DD-MM-YYYY HH:MM.
+8.	The incident description should be short, direct, and operationally clear.
 ________________________________________
 3. 12-Point INC Checklist / 12項 INC 必填資料
 No.	English Field	中文欄位	Required	Format / Guidance
 1	Required to Inform Customer	是否需要通知客戶	Yes	Yes / No；是 / 否
 2	Date/Time of Occurrence	發生日期／時間	Yes	DD-MM-YYYY HH:MM
-3	Location / Tower / Floor	地點／大樓／樓層	Yes	Site - Tower - Floor
-4	Incident	事故	Yes	Subcategory - Site - Device Number - Short Description
-5	Customer / Informant	客戶／通報人	Yes	Team or person who discovered or reported the issue
+3	Location / Tower / Floor	地點／大樓／樓層	Yes	Site - Floor
+4	Incident	事故	Yes	Category - Site - Device Number - Short Description
+5	Customer / Informant	客戶／通報人	Yes	Who reported this issue
 6	Impact	影響	Yes	Customer impact and other impact
 7	Current Status / Action Taken	目前狀態／已採取行動	Yes	Checked, informed, arranged, isolated, monitored, etc.
-8	Vendor Estimated Time of Arrival	供應商預計到達時間	Conditional	ETA, Pending, TBC, or N/A
+8	Vendor Estimated Time of Arrival	供應商預計到達時間	ETA, TBC
 9	Vendor Company Name	供應商公司名稱	Conditional	Vendor name or N/A
-10	Category	類別	Yes	Responsible department
+10	Category	類別	Yes	Security, Property, E&M, TD
 11	Person in Charge	負責人	Yes	Incident lead staff name
 12	Person in Charge Department	負責人部門	Yes	Lead’s team or department
 ________________________________________
