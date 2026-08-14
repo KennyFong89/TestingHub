@@ -1,0 +1,232 @@
+1. Document Purpose / 文件目的
+This document provides standard knowledge for the INC Message Builder agent to collect incident information, check completeness, and generate bilingual INC messages for Central Control.
+本文件提供 INC Message Builder 使用的標準知識，協助保安及營運同事收集事故資料、檢查資料完整性，並產生中英文雙語 INC message，供 Central Control 建立新的 INC ticket。
+The agent should use this document to:
+•	Collect the 12 required INC details
+•	Ask missing information one item at a time
+•	Use standard English and Traditional Chinese wording
+•	Produce a copy-ready bilingual INC message
+•	Avoid guessing unconfirmed information
+________________________________________
+2. General INC Message Principles / INC Message 基本原則
+Each INC message must follow these principles:
+1.	Use a clear, concise, and professional tone.
+2.	Provide both English Version and 中文版本.
+3.	Keep site names, tower names, floor names, device numbers, vendor names, staff names, and department names unchanged.
+4.	Do not assume information that has not been provided.
+5.	If information is unavailable, use TBC, Pending, or N/A.
+6.	Date and time should use the format DD-MM-YYYY HH:MM.
+7.	The incident description should be short, direct, and operationally clear.
+________________________________________
+3. 12-Point INC Checklist / 12項 INC 必填資料
+No.	English Field	中文欄位	Required	Format / Guidance
+1	Required to Inform Customer	是否需要通知客戶	Yes	Yes / No；是 / 否
+2	Date/Time of Occurrence	發生日期／時間	Yes	DD-MM-YYYY HH:MM
+3	Location / Tower / Floor	地點／大樓／樓層	Yes	Site - Tower - Floor
+4	Incident	事故	Yes	Subcategory - Site - Device Number - Short Description
+5	Customer / Informant	客戶／通報人	Yes	Team or person who discovered or reported the issue
+6	Impact	影響	Yes	Customer impact and other impact
+7	Current Status / Action Taken	目前狀態／已採取行動	Yes	Checked, informed, arranged, isolated, monitored, etc.
+8	Vendor Estimated Time of Arrival	供應商預計到達時間	Conditional	ETA, Pending, TBC, or N/A
+9	Vendor Company Name	供應商公司名稱	Conditional	Vendor name or N/A
+10	Category	類別	Yes	Responsible department
+11	Person in Charge	負責人	Yes	Incident lead staff name
+12	Person in Charge Department	負責人部門	Yes	Lead’s team or department
+________________________________________
+4. Standard Question Set / 標準提問方式
+The agent should ask the following questions one by one.
+1. Required to Inform Customer / 是否需要通知客戶
+English: Is customer notification required? Please answer Yes or No.
+中文： 是否需要通知客戶？請回答「是」或「否」。
+2. Date/Time of Occurrence / 發生日期／時間
+English: What is the date and time of occurrence? Please use DD-MM-YYYY HH:MM.
+中文： 事故發生日期及時間是甚麼？請使用 DD-MM-YYYY HH:MM 格式。
+3. Location / Tower / Floor / 地點／大樓／樓層
+English: What is the location, tower, and floor?
+中文： 事故地點、大樓及樓層是甚麼？
+4. Incident / 事故
+English: What happened? Please provide the sub-category, site, device number, and a short description.
+中文： 發生了甚麼事故？請提供子類別、地點、設備編號及簡短描述。
+5. Customer / Informant / 客戶／通報人
+English: Which team or person discovered or reported the issue?
+中文： 哪個團隊或人士發現或通報問題？
+6. Impact / 影響
+English: What is the customer impact and any other impact?
+中文： 對客戶有甚麼影響？是否有其他影響？
+7. Current Status / Action Taken / 目前狀態／已採取行動
+English: What action has been taken so far?
+中文： 目前已採取甚麼行動？
+8. Vendor ETA / 供應商預計到達時間
+English: What is the vendor estimated time of arrival?
+中文： 供應商預計到達時間是甚麼？
+9. Vendor Company Name / 供應商公司名稱
+English: What is the vendor company name?
+中文： 供應商公司名稱是甚麼？
+10. Category / 類別
+English: Which department should lead this incident?
+中文： 此事故應由哪個部門負責跟進？
+11. Person in Charge / 負責人
+English: Who is the person in charge?
+中文： 負責人是誰？
+12. Person in Charge Department / 負責人部門
+English: Which team or department does the person in charge belong to?
+中文： 負責人屬於哪個團隊或部門？
+________________________________________
+5. Category Reference / 類別參考
+Incident Type	Suggested Category	Notes
+Lift fault	Engineering	Include lift number and affected floor
+Air-conditioning issue	Engineering	Include affected area and temperature impact if available
+Access control issue	Security / Engineering	Include door number, card reader, or affected access point
+CCTV issue	Security / Engineering	Include camera number and affected view
+Fire alarm / fire panel issue	Engineering / Safety	Include alarm location and panel status
+Water leakage	Engineering	Include source, affected area, and containment action
+Power failure	Engineering	Include affected equipment or area
+Network / system issue	IT	Include system name and user impact
+Cleaning / hygiene issue	Facilities / Cleaning	Include location and urgency
+Suspicious person / security incident	Security	Include location, description, and action taken
+________________________________________
+6. Standard Wording Library / 標準用語庫
+6.1 Customer Impact / 客戶影響
+Situation	English Wording	中文寫法
+No customer impact	No customer impact reported at this moment.	暫時未收到客戶受影響報告。
+Access affected	Customer access is affected.	客戶出入受到影響。
+Service affected	Service is affected.	服務受到影響。
+Partial impact	Partial area is affected.	部分範圍受到影響。
+Under checking	Impact is under checking.	影響情況仍在確認中。
+6.2 Action Taken / 已採取行動
+Situation	English Wording	中文寫法
+Site checked	Security team checked the area.	保安團隊已檢查現場。
+Vendor contacted	Vendor has been contacted for follow-up.	已聯絡供應商跟進。
+Warning notice placed	Warning notice has been placed on site.	現場已放置提示告示。
+Area cordoned	Affected area has been cordoned off.	受影響範圍已圍封。
+Monitoring	Security team will continue to monitor the situation.	保安團隊會繼續監察情況。
+6.3 Vendor ETA / 供應商 ETA
+Situation	English Wording	中文寫法
+ETA confirmed	Vendor ETA is DD-MM-YYYY HH:MM.	供應商預計到達時間為 DD-MM-YYYY HH:MM。
+Waiting for ETA	Vendor ETA is pending.	供應商預計到達時間待確認。
+Vendor not required	Vendor attendance is not required at this stage.	現階段無需供應商到場。
+________________________________________
+7. Final INC Message Template / 最終 INC Message 範本
+English Version
+Please Create a New INC for <<Site Name>>
+
+1. Required to Inform Customer: <<Yes/No>>
+2. Date/Time of Occurrence: <<DD-MM-YYYY HH:MM>>
+3. Location / Tower / Floor: <<Site - Tower - Floor>>
+4. Incident: <<Sub-category>> - <<Site>> - <<Device Number>> - <<Short Description>>
+5. Customer / Informant: <<Team or person who discovered/reported the issue>>
+6. Impact: <<Customer impact>>, <<Other impact>>
+7. Current Status / Action Taken: <<Action taken>>
+8. Vendor Estimated Time of Arrival: <<Vendor ETA>>
+9. Vendor Company Name: <<Vendor name>>
+10. Category: <<Responsible department>>
+11. Person in Charge (Staff Name): <<PIC name>>
+12. Person in Charge (Staff Department): <<PIC department>>
+
+中文版本
+請為 <<Site Name>> 建立新的 INC
+
+1. 是否需要通知客戶：<<是/否>>
+2. 發生日期／時間：<<DD-MM-YYYY HH:MM>>
+3. 地點／大樓／樓層：<<Site - Tower - Floor>>
+4. 事故：<<Sub-category>> - <<Site>> - <<Device Number>> - <<簡短描述>>
+5. 客戶／通報人：<<發現或通報問題的團隊／人士>>
+6. 影響：<<客戶影響>>，<<其他影響>>
+7. 目前狀態／已採取行動：<<已採取行動>>
+8. 供應商預計到達時間：<<Vendor ETA>>
+9. 供應商公司名稱：<<Vendor name>>
+10. 類別：<<負責部門>>
+11. 負責人（職員姓名）：<<PIC name>>
+12. 負責人（職員部門）：<<PIC department>>
+________________________________________
+8. Sample Case: Lift Fault / 範例：升降機故障
+English Version
+Please Create a New INC for ABC Tower
+
+1. Required to Inform Customer: Yes
+2. Date/Time of Occurrence: 12-08-2026 08:35
+3. Location / Tower / Floor: ABC Tower - Tower 1 - G/F
+4. Incident: Lift - ABC Tower - Lift L3 - Lift stopped at G/F and cannot operate normally
+5. Customer / Informant: Security Team
+6. Impact: Customer access is affected, tenants need to use other lifts
+7. Current Status / Action Taken: Security team checked the area, warning notice placed, vendor contacted for urgent attendance
+8. Vendor Estimated Time of Arrival: 12-08-2026 09:30
+9. Vendor Company Name: OTIS
+10. Category: Engineering
+11. Person in Charge (Staff Name): Kenny Fong
+12. Person in Charge (Staff Department): ABC Tower Security
+
+中文版本
+請為 ABC Tower 建立新的 INC
+
+1. 是否需要通知客戶：是
+2. 發生日期／時間：12-08-2026 08:35
+3. 地點／大樓／樓層：ABC Tower - Tower 1 - G/F
+4. 事故：Lift - ABC Tower - Lift L3 - 升降機停在地下，未能正常運作
+5. 客戶／通報人：保安團隊
+6. 影響：客戶出入受到影響，租戶需要使用其他升降機
+7. 目前狀態／已採取行動：保安團隊已檢查現場，已放置提示告示，並已聯絡供應商緊急到場
+8. 供應商預計到達時間：12-08-2026 09:30
+9. 供應商公司名稱：OTIS
+10. 類別：Engineering
+11. 負責人（職員姓名）：Kenny Fong
+12. 負責人（職員部門）：ABC Tower Security
+`
+________________________________________
+9. Missing Information Handling / 缺漏資料處理
+Missing Item	Agent Response
+Missing date/time	Ask user to provide date/time in DD-MM-YYYY HH:MM format.
+Missing location	Ask for site, tower, floor, or affected area.
+Missing device number	Ask for device number; if unavailable, confirm whether to mark as TBC.
+Missing impact	Ask whether customer or operation is affected.
+Missing vendor ETA	Ask whether vendor has been contacted and whether ETA is available.
+Missing PIC	Ask who will be responsible for follow-up.
+________________________________________
+10. Quality Check Rules / 質素檢查規則
+Before producing the final INC message, the agent should check:
+1.	Are all 12 points included?
+2.	Is the date/time in correct format?
+3.	Is the location specific enough?
+4.	Is the incident description short but clear?
+5.	Is customer impact stated?
+6.	Is action taken stated?
+7.	Is vendor information completed or marked as TBC, Pending, or N/A?
+8.	Is the responsible department stated?
+9.	Are English and Chinese versions consistent?
+10.	Are proper nouns preserved correctly?
+________________________________________
+11. Terms and Translation Guide / 術語及翻譯參考
+English Term	Traditional Chinese
+Incident	事故
+Customer impact	客戶影響
+Current status	目前狀態
+Action taken	已採取行動
+Vendor ETA	供應商預計到達時間
+Person in Charge	負責人
+Security Team	保安團隊
+Engineering	工程部
+Central Control	中央控制室
+Access Control	門禁系統
+CCTV	閉路電視
+Fire Alarm	火警鐘
+Lift	升降機
+________________________________________
+12. Do Not Guess Rule / 不可推測規則
+The agent must not guess the following information:
+•	Customer impact
+•	Vendor ETA
+•	Vendor company name
+•	PIC name
+•	Responsible department
+•	Exact device number
+•	Whether customer notification is required
+If uncertain, the agent should ask a focused follow-up question or use TBC, Pending, or N/A after user confirmation.
+________________________________________
+建議 Word 排版設定
+•	Title: 20–24 pt, Bold
+•	Heading 1: 16 pt, Bold
+•	Heading 2: 13–14 pt, Bold
+•	Body text: 11 pt, Calibri / Aptos
+•	Tables: AutoFit to Window
+•	File name: INC Message Builder Knowledge Guide.docx
+
