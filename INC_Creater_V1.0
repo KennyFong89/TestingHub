@@ -74,17 +74,67 @@ English: Which team or department does the person in charge belong to?
 中文： 負責人屬於哪個團隊或部門？
 ________________________________________
 5. Category Reference / 類別參考
-Incident Type	Suggested Category	Notes
-Lift fault	Engineering	Include lift number and affected floor
-Air-conditioning issue	Engineering	Include affected area and temperature impact if available
-Access control issue	Security / Engineering	Include door number, card reader, or affected access point
-CCTV issue	Security / Engineering	Include camera number and affected view
-Fire alarm / fire panel issue	Engineering / Safety	Include alarm location and panel status
-Water leakage	Engineering	Include source, affected area, and containment action
-Power failure	Engineering	Include affected equipment or area
-Network / system issue	IT	Include system name and user impact
-Cleaning / hygiene issue	Facilities / Cleaning	Include location and urgency
-Suspicious person / security incident	Security	Include location, description, and action taken
+Category	類別 
+Card reader malfunction	讀卡器故障
+Door Alarm	門鈴警報
+Access Control System Server Shutdown 	門禁管制伺服器故障
+Face Recognition Sysgem malfunction	人臉辨識系統故障
+KMS keybox malfunction	鑰匙管理系統（KMS）鑰匙箱故障
+Lost access card	訪問卡丟失
+Lost Key	鑰匙丟失
+SkiData System malfunction	SkiData 停車系統故障
+Data Hall Door handle damaged	數據廳大門把手損壞
+Car park dropbar malfunction	停車場入口閘門故障
+Intercom Malfunction	對講機故障
+Door malfunction	門故障
+Door and accessory loosen/broken 	門及配件鬆脫/損壞
+Door Controller Communication Error	門控器通訊錯誤
+Electric Fence Malfunction	電圍欄故障
+Bollards Malfunction	Bollards 故障
+Metal Gate Malfunction	入口金屬閘門故障
+Sliding Gate Malfunction	入口滑動門故障
+Circle Lock malfunction	Circle Lock 故障
+VMS Self-service kiosk malfunction	VMS自助機台故障
+Fire Alarm	火警警報
+Fire Prevention System Gas discharged 	防火系統氣體排放 
+PA System Failure	廣播系統故障 
+CCTV camera lost of signal 	閉路電視攝影機信號失效
+CCTV record lost 	閉路電視記錄失效
+CCTV camera no image 	閉路電視攝影機無圖像
+CCTV Server Shutdown 	閉路電視伺服器故障
+Toilet service suspended	廁所服務暫停
+Elevator Failure	電梯故障
+Elevator Entrapment 	有人被困在𨋢裡 
+Water Flooding 	水浸
+Water Leakage	漏水
+Water Seepage	滲水
+Water Dripping	滴水
+Water Supply Suspended	供水暫停
+Email Service malfunction	電子郵件服務故障
+Service Now malfunction	Service Now 故障
+Video Wall malfunction	AV Wall 系統故障
+VMS malfunction 	Visitor Management System (VMS) 故障
+PinShift System malfunction 	PinShift System 故障
+IP Phone malfunction	IP電話故障
+Nitrol Patrol Phone malfunction	Nitrol 巡邏電話故障
+Walkie Talkie malfunction	對講機故障
+WiFi network shut down	WiFi 網絡故障
+WiFi Access Point failure 	WiFi 接入點故障
+Traffic Accident 	交通意外
+Traffic Accident with person injury	交通意外造成人身傷害
+Injury On Duty	工傷意外
+Accident 	意外
+Accident with person injury	意外造成人員受傷
+Government Official Visit	政府官員訪問
+Customer Complaint	客戶投訴
+Dispute	爭議
+Bomb Threat	炸彈威脅
+Hostile Intruder	敵對入侵者
+Suspicious Object Found	發現可疑物品
+Road Blocked	道路被封鎖
+DAWN RAID	政府執法機構突擊上門搜查
+Chemical Spills	化學品洩漏
+Drill	演習
 ________________________________________
 6. Standard Wording Library / 標準用語庫
 6.1 Customer Impact / 客戶影響
