@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Log 唯讀日誌系統</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; background-color: #f4f7f6; color: #333; }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 8px; }
+        .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        label { display: block; margin-top: 10px; font-weight: bold; color: #555; }
+        input, textarea, button { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px; }
+        textarea { resize: vertical; height: 80px; }
+        button { background-color: #3498db; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        button:hover { background-color: #2980b9; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f8f9fa; }
+        .locked { background-color: #e9ecef; color: #495057; }
+        .action-btn { padding: 5px 10px; font-size: 12px; width: auto; margin-right: 5px; }
+        .unlock-btn { background-color: #e74c3c; }
+        .unlock-btn:hover { background-color: #c0392b; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>新增 Daily Log 紀錄</h2>
+        <form id="logForm">
+            <label for="logDate">日期：</label>
+            <input type="date" id="logDate" required>
+            
+            <label for="logCategory">工作項目 / 類別：</label>
+            <input type="text" id="logCategory" placeholder="例如：系統維護 / 數據清洗" required>
+            
+            <label for="logContent">詳細內容：</label>
+            <textarea id="logContent" placeholder="輸入今日日誌內容..." required></textarea>
+            
+            <button type="submit">送出並鎖定紀錄</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Daily Log 歷史紀錄 (唯讀保護)</h2>
+        <table id="logTable">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">日期</th>
+                    <th style="width: 20%;">項目</th>
+                    <th style="width: 45%;">內容</th>
+                    <th style="width: 20%;">操作 / 狀態</th>
+                </tr>
+            </thead>
+            <tbody id="logTableBody">
+                <!-- 動態插入紀錄 -->
+            </tbody>
+        </table>
+    </div>
+
+<script>
+    const PASSWORD = "AskKenny"; // 對應 Excel 解鎖密碼
+    const form = document.getElementById('logForm');
+    const tableBody = document.getElementById('logTableBody');
+
+    // 頁面載入時初始化預設日期為今天
+    document.getElementById('logDate').valueAsDate = new Date();
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const date = document.getElementById('logDate').value;
+        const category = document.getElementById('logCategory').value;
+        const content = document.getElementById('logContent').value;
+
+        addLogRow(date, category, content, true);
+        form.reset();
+        document.getElementById('logDate').valueAsDate = new Date();
+    });
+
+    function addLogRow(date, category, content, isLocked) {
+        const row = document.createElement('tr');
+        
+        const tdDate = document.createElement('td');
+        const tdCategory = document.createElement('td');
+        const tdContent = document.createElement('td');
+        const tdAction = document.createElement('td');
+
+        tdDate.textContent = date;
+        tdCategory.textContent = category;
+        tdContent.textContent = content;
+
+        updateRowState(row, tdContent, tdAction, isLocked, date, category, content);
+
+        row.appendChild(tdDate);
+        row.appendChild(tdCategory);
+        row.appendChild(tdContent);
+        row.appendChild(tdAction);
+
+        tableBody.prepend(row); // 新紀錄加在最上方
+    }
+
+    function updateRowState(row, tdContent, tdAction, isLocked, date, category, content) {
+        if (isLocked) {
+            row.classList.add('locked');
+            tdContent.innerHTML = `🔒 <em>${content}</em>`;
+            tdAction.innerHTML = `<button class="action-btn unlock-btn" onclick="requestUnlock(this, '${date}', '${category}', '${content}')">解鎖修改</button>`;
+        } else {
+            row.classList.remove('locked');
+            tdContent.innerHTML = `<textarea class="edit-content">${content}</textarea>`;
+            tdAction.innerHTML = `<button class="action-btn" onclick="saveRow(this)">儲存並鎖定</button>`;
+        }
+    }
+
+    function requestUnlock(button, date, category, content) {
+        const inputPwd = prompt("此紀錄已送出鎖定，修改需要輸入解鎖密碼 (提示: AskKenny)：");
+        if (inputPwd === PASSWORD) {
+            alert("密碼正確，已暫時解鎖該行！");
+            const row = button.closest('tr');
+            const tdContent = row.cells[2];
+            const tdAction = row.cells[3];
+            
+            row.classList.remove('locked');
+            tdContent.innerHTML = `<textarea class="edit-content">${content}</textarea>`;
+            tdAction.innerHTML = `<button class="action-btn" onclick="saveRow(this)">儲存並鎖定</button>`;
+        } else if (inputPwd !== null) {
+            alert("密碼錯誤，無法修改！");
+        }
+    }
+
+    function saveRow(button) {
+        const row = button.closest('tr');
+        const date = row.cells[0].textContent;
+        const category = row.cells[1].textContent;
+        const newContent = row.querySelector('.edit-content').value;
+        const tdContent = row.cells[2];
+        const tdAction = row.cells[3];
+
+        if(!newContent.trim()) {
+            alert("內容不能為空！");
+            return;
+        }
+
+        updateRowState(row, tdContent, tdAction, true, date, category, newContent);
+        alert("已重新加密鎖定！");
+    }
+</script>
+
+</body>
+</html>
