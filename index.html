@@ -2,40 +2,65 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>Daily Log 唯讀日誌系統</title>
+    <title>CSOC - Security Daily Log 2026</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; background-color: #f4f7f6; color: #333; }
-        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 8px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 1200px; margin: 30px auto; padding: 0 20px; background-color: #f4f7f6; color: #333; }
+        h2 { color: #2c3e50; border-bottom: 2px solid #27ae60; padding-bottom: 8px; }
         .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        label { display: block; margin-top: 10px; font-weight: bold; color: #555; }
-        input, textarea, button { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px; }
-        textarea { resize: vertical; height: 80px; }
-        button { background-color: #3498db; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 15px; }
-        button:hover { background-color: #2980b9; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background-color: #f8f9fa; }
-        .locked { background-color: #e9ecef; color: #495057; }
-        .action-btn { padding: 5px 10px; font-size: 12px; width: auto; margin-right: 5px; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+        label { display: block; margin-top: 10px; font-weight: bold; color: #555; font-size: 13px; }
+        input, textarea, button { width: 100%; padding: 8px 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px; }
+        textarea { resize: vertical; height: 60px; grid-column: 1 / -1; }
+        .full-width { grid-column: 1 / -1; }
+        button { background-color: #27ae60; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 15px; padding: 10px; }
+        button:hover { background-color: #219653; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #27ae60; color: white; }
+        .locked { background-color: #f8f9fa; color: #495057; }
+        .action-btn { padding: 4px 8px; font-size: 12px; width: auto; margin-right: 5px; margin-top: 0; }
         .unlock-btn { background-color: #e74c3c; }
         .unlock-btn:hover { background-color: #c0392b; }
+        .edit-input { width: 100%; padding: 4px; font-size: 13px; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h2>新增 Daily Log 紀錄</h2>
+        <h2>CSOC - Security Daily Log 2026 (新增紀錄)</h2>
         <form id="logForm">
-            <label for="logDate">日期：</label>
-            <input type="date" id="logDate" required>
-            
-            <label for="logCategory">工作項目 / 類別：</label>
-            <input type="text" id="logCategory" placeholder="例如：系統維護 / 數據清洗" required>
-            
-            <label for="logContent">詳細內容：</label>
-            <textarea id="logContent" placeholder="輸入今日日誌內容..." required></textarea>
-            
-            <button type="submit">送出並鎖定紀錄</button>
+            <div class="form-grid">
+                <div>
+                    <label for="logNumber">Number：</label>
+                    <input type="text" id="logNumber" value="2026/CSOC/221113" required>
+                </div>
+                <div>
+                    <label for="logDate">Date (D/M/Y)：</label>
+                    <input type="text" id="logDate" value="18 Nov 2026" required>
+                </div>
+                <div>
+                    <label for="timeStarted">Time Started：</label>
+                    <input type="text" id="timeStarted" placeholder="19:05">
+                </div>
+                <div>
+                    <label for="timeEnded">Time Ended：</label>
+                    <input type="text" id="timeEnded" placeholder="19:53">
+                </div>
+                <div>
+                    <label for="recordBy">Reocrd By：</label>
+                    <input type="text" id="recordBy" value="801416 Ken" required>
+                </div>
+                <div>
+                    <label for="supplemental">Supplemental：</label>
+                    <input type="text" id="supplemental" placeholder="補充備註">
+                </div>
+                <div class="full-width">
+                    <label for="description">Description：</label>
+                    <textarea id="description" placeholder="MP system check started by 801416 Ken..." required></textarea>
+                </div>
+            </div>
+            <button type="submit">送出並鎖定紀錄 (Lock Entry)</button>
         </form>
     </div>
 
@@ -44,83 +69,122 @@
         <table id="logTable">
             <thead>
                 <tr>
-                    <th style="width: 15%;">日期</th>
-                    <th style="width: 20%;">項目</th>
-                    <th style="width: 45%;">內容</th>
-                    <th style="width: 20%;">操作 / 狀態</th>
+                    <th>Number</th>
+                    <th>Date (D/M/Y)</th>
+                    <th>Time Started</th>
+                    <th>Time Ended</th>
+                    <th>Description</th>
+                    <th>Reocrd By</th>
+                    <th>Supplemental</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody id="logTableBody">
-                <!-- 動態插入紀錄 -->
+                <!-- 預設帶入截圖中的範例資料 -->
             </tbody>
         </table>
     </div>
 
 <script>
-    const PASSWORD = "AskKenny"; // 對應 Excel 解鎖密碼
+    const PASSWORD = "AskKenny"; // 對應 Excel 解鎖密碼[cite: 1]
     const form = document.getElementById('logForm');
     const tableBody = document.getElementById('logTableBody');
 
-    // 頁面載入時初始化預設日期為今天
-    document.getElementById('logDate').valueAsDate = new Date();
+    // 初始化載入範例資料（對應截圖內容）
+    const initialData = [
+        { number: "2026/CSOC/221113", date: "18 Nov 2026", started: "19:05", ended: "", desc: "MP system check started by 801416 Ken", record: "801416 Ken", supp: "" },
+        { number: "2026/CSOC/221114", date: "18 Nov 2026", started: "", ended: "19:53", desc: "MP system check finished by 801416 Ken", record: "801416 Ken", supp: "" }
+    ];
+
+    window.addEventListener('DOMContentLoaded', () => {
+        initialData.forEach(item => {
+            addLogRow(item.number, item.date, item.started, item.ended, item.desc, item.record, item.supp, true);
+        });
+    });
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
+        const number = document.getElementById('logNumber').value;
         const date = document.getElementById('logDate').value;
-        const category = document.getElementById('logCategory').value;
-        const content = document.getElementById('logContent').value;
+        const started = document.getElementById('timeStarted').value;
+        const ended = document.getElementById('timeEnded').value;
+        const desc = document.getElementById('description').value;
+        const record = document.getElementById('recordBy').value;
+        const supp = document.getElementById('supplemental').value;
 
-        addLogRow(date, category, content, true);
+        addLogRow(number, date, started, ended, desc, record, supp, true);
         form.reset();
-        document.getElementById('logDate').valueAsDate = new Date();
+        
+        // 自動遞增編號尾數的小示範
+        let numParts = number.split('/');
+        if(numParts.length === 3) {
+            let seq = parseInt(numParts[2]) + 1;
+            document.getElementById('logNumber').value = `${numParts[0]}/${numParts[1]}/${seq}`;
+        }
+        document.getElementById('logDate').value = "18 Nov 2026";
+        document.getElementById('recordBy').value = "801416 Ken";
     });
 
-    function addLogRow(date, category, content, isLocked) {
+    function addLogRow(number, date, started, ended, desc, record, supp, isLocked) {
         const row = document.createElement('tr');
         
+        const tdNum = document.createElement('td');
         const tdDate = document.createElement('td');
-        const tdCategory = document.createElement('td');
-        const tdContent = document.createElement('td');
+        const tdStarted = document.createElement('td');
+        const tdEnded = document.createElement('td');
+        const tdDesc = document.createElement('td');
+        const tdRecord = document.createElement('td');
+        const tdSupp = document.createElement('td');
         const tdAction = document.createElement('td');
 
+        tdNum.textContent = number;
         tdDate.textContent = date;
-        tdCategory.textContent = category;
-        tdContent.textContent = content;
+        tdStarted.textContent = started;
+        tdEnded.textContent = ended;
+        tdDesc.textContent = desc;
+        tdRecord.textContent = record;
+        tdSupp.textContent = supp;
 
-        updateRowState(row, tdContent, tdAction, isLocked, date, category, content);
+        updateRowState(row, tdDesc, tdAction, isLocked, number, date, started, ended, desc, record, supp);
 
+        row.appendChild(tdNum);
         row.appendChild(tdDate);
-        row.appendChild(tdCategory);
-        row.appendChild(tdContent);
+        row.appendChild(tdStarted);
+        row.appendChild(tdEnded);
+        row.appendChild(tdDesc);
+        row.appendChild(tdRecord);
+        row.appendChild(tdSupp);
         row.appendChild(tdAction);
 
-        tableBody.prepend(row); // 新紀錄加在最上方
+        tableBody.prepend(row);
     }
 
-    function updateRowState(row, tdContent, tdAction, isLocked, date, category, content) {
+    function updateRowState(row, tdDesc, tdAction, isLocked, number, date, started, ended, desc, record, supp) {
         if (isLocked) {
             row.classList.add('locked');
-            tdContent.innerHTML = `🔒 <em>${content}</em>`;
-            tdAction.innerHTML = `<button class="action-btn unlock-btn" onclick="requestUnlock(this, '${date}', '${category}', '${content}')">解鎖修改</button>`;
+            tdDesc.innerHTML = `🔒 <em>${desc}</em>`;
+            tdAction.innerHTML = `<button class="action-btn unlock-btn" onclick="requestUnlock(this, '${number}', '${date}', '${started}', '${ended}', '${record}', '${supp}')">解鎖修改</button>`;
         } else {
             row.classList.remove('locked');
-            tdContent.innerHTML = `<textarea class="edit-content">${content}</textarea>`;
-            tdAction.innerHTML = `<button class="action-btn" onclick="saveRow(this)">儲存並鎖定</button>`;
+            tdDesc.innerHTML = `<textarea class="edit-input edit-desc">${desc}</textarea>`;
+            tdAction.innerHTML = `<button class="action-btn" onclick="saveRow(this)">儲存鎖定</button>`;
         }
     }
 
-    function requestUnlock(button, date, category, content) {
+    function requestUnlock(button, number, date, started, ended, record, supp) {
         const inputPwd = prompt("此紀錄已送出鎖定，修改需要輸入解鎖密碼 (提示: AskKenny)：");
         if (inputPwd === PASSWORD) {
             alert("密碼正確，已暫時解鎖該行！");
             const row = button.closest('tr');
-            const tdContent = row.cells[2];
-            const tdAction = row.cells[3];
+            const tdDesc = row.cells[4];
+            const tdAction = row.cells[7];
+            
+            const currentDesc = tdDesc.textContent.replace('🔒 ', '');
             
             row.classList.remove('locked');
-            tdContent.innerHTML = `<textarea class="edit-content">${content}</textarea>`;
-            tdAction.innerHTML = `<button class="action-btn" onclick="saveRow(this)">儲存並鎖定</button>`;
+            tdDesc.innerHTML = `<textarea class="edit-input edit-desc">${currentDesc}</textarea>`;
+            tdAction.innerHTML = `<button class="action-btn" onclick="saveRow(this)">儲存鎖定</button>`;
         } else if (inputPwd !== null) {
             alert("密碼錯誤，無法修改！");
         }
@@ -128,18 +192,23 @@
 
     function saveRow(button) {
         const row = button.closest('tr');
-        const date = row.cells[0].textContent;
-        const category = row.cells[1].textContent;
-        const newContent = row.querySelector('.edit-content').value;
-        const tdContent = row.cells[2];
-        const tdAction = row.cells[3];
+        const number = row.cells[0].textContent;
+        const date = row.cells[1].textContent;
+        const started = row.cells[2].textContent;
+        const ended = row.cells[3].textContent;
+        const newDesc = row.querySelector('.edit-desc').value;
+        const record = row.cells[5].textContent;
+        const supp = row.cells[6].textContent;
+        
+        const tdDesc = row.cells[4];
+        const tdAction = row.cells[7];
 
-        if(!newContent.trim()) {
-            alert("內容不能為空！");
+        if(!newDesc.trim()) {
+            alert("Description 不能為空！");
             return;
         }
 
-        updateRowState(row, tdContent, tdAction, true, date, category, newContent);
+        updateRowState(row, tdDesc, tdAction, true, number, date, started, ended, newDesc, record, supp);
         alert("已重新加密鎖定！");
     }
 </script>
